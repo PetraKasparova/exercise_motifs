@@ -147,7 +147,7 @@ class MotifFinder:
         self.windows = []
         for sequence in self.sequences:
             sequence_windows = []
-            for i in range(len(sequences) - self.l +1):
+            for i in range(len(sequence) - self.l + 1):
                 window = sequence[i:i + self.l]
                 sequence_windows.append(window)
             self.windows.append(sequence_windows)
@@ -161,7 +161,7 @@ class MotifFinder:
                 if distance < best_distance:
                     best_distance = distance
             total += best_distance
-            return total
+        return total
 
     def median_string(self):
         best_pattern = None
@@ -213,5 +213,10 @@ class MotifFinder:
         return best_motifs, best_score
 
 
+finder = MotifFinder(lecture_dna, 6, seed=1)
 
+median, distance = finder.median_string()
+
+print("Median:", median)
+print("Distance:", distance)
 
